@@ -109,6 +109,7 @@
 
 			// Vars.
 				var $form = document.querySelectorAll('#signup-form')[0],
+					$email = document.querySelectorAll('#email')[0],
 					$submit = document.querySelectorAll('#signup-form input[type="submit"]')[0],
 					$message;
 
@@ -139,7 +140,7 @@
 
 			// Events.
 			// Note: If you're *not* using AJAX, get rid of this event listener.
-				$form.addEventListener('submit', function(event) {
+				/*$form.addEventListener('submit', function(event) {
 
 					event.stopPropagation();
 					event.preventDefault();
@@ -153,7 +154,7 @@
 					// Process form.
 					// Note: Doesn't actually do anything yet (other than report back with a "thank you"),
 					// but there's enough here to piece together a working AJAX submission call that does.
-						window.setTimeout(function() {
+						var subscribeSuccess = function() {
 
 							// Reset form.
 								$form.reset();
@@ -165,9 +166,20 @@
 								$message._show('success', 'Thank you!');
 								//$message._show('failure', 'Something went wrong. Please try again.');
 
-						}, 750);
+						};
+						var subscribeError = function(a, b, c) {
+							console.error(a,b,c)
+							// Reset form.
+							// Enable submit.
+								$submit.disabled = false;
 
-				});
+							// Show message.
+								$message._show('error', 'Error when subscibing');
+								//$message._show('failure', 'Something went wrong. Please try again.');
+
+						};
+						window.setTimeout(subscribeSuccess, 750);
+				});*/
 
 		})();
 
